@@ -40,15 +40,13 @@ Este proyecto está desarrollado en el lenguaje de programación C.
 
 Para cualquier duda, sugerencia o consulta, no dudes en ponerte en contacto con el equipo de desarrollo:
 
-- Nombre del contacto: >*Nombre de la empresa*<
-- Correo electrónico: >*correoempresa@gmail.com*<
-- Sitio web: >*web*<
+- **Empresa de Desarrollo**: *Nombre de la empresa*
 - **Desarrolladores**:
-  - Tobías ([cuentaGitHub](enlace_a_cuenta_github))
-  - Braiam ([cuentaGitHub](enlace_a_cuenta_github))
-  - Michael ([cuentaGitHub](enlace_a_cuenta_github))
-  - Nicolás ([cuentaGitHub](enlace_a_cuenta_github))
-  - Leonel ([cuentaGitHub](enlace_a_cuenta_github))
+  - Tobías ([Perfil de GitHub](https://github.com/tobiasvidela))
+  - Braiam ([Perfil de GitHub](https://github.com/))
+  - Michael ([Perfil de GitHub](https://github.com/))
+  - Nicolás ([Perfil de GitHub](https://github.com/))
+  - Leonel ([Perfil de GitHub](https://github.com/))
 
 ---
 Este proyecto no es parte del programa académico y no está asociado oficialmente con la empresa TechSprint Innovations.
