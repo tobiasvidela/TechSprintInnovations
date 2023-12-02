@@ -28,7 +28,7 @@ Este proyecto está desarrollado en el lenguaje de programación C.
     - **Descripción**: Dispositivos electrónicos innovadores, como teléfonos inteligentes, computadoras portátiles y accesorios tecnológicos de vanguardia.
 1. **Moda**
     - **Nombre**: TrendStyle Elite
-    - **Descripción**: Ropa de última moda, desde prendas d evestir hasta accesorios de alta gama para hombres.
+    - **Descripción**: Ropa de última moda, desde prendas de vestir hasta accesorios de alta gama para hombres.
 1. **Hogar y Decoración**
     - **Nombre**: CasaDecor Prime
     - **Descripción**: Artículos para el hogar y decoración, que van desde muebles hasta artículos decorativos elegantes y funcionales.
