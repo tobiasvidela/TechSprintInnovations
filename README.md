@@ -44,7 +44,7 @@ Para cualquier duda, sugerencia o consulta, no dudes en ponerte en contacto con 
 - **Desarrolladores**:
   - Tobías ([Perfil de GitHub](https://github.com/tobiasvidela))
   - Braiam ([Perfil de GitHub](https://github.com/))
-  - Michael ([Perfil de GitHub](https://github.com/))
+  - Michael ([Perfil de GitHub](https://github.com/Michael456783))
   - Nicolás ([Perfil de GitHub](https://github.com/))
   - Leonel ([Perfil de GitHub](https://github.com/))
 
