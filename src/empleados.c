@@ -7,8 +7,8 @@
 #include "empleados.h"
 
 
-extern Empleado *EmpleadoPrimero = NULL;
-extern Empleado *EmpleadoUltimo = NULL;
+Empleado *EmpleadoPrimero = NULL;
+Empleado *EmpleadoUltimo = NULL;
 
 void cargarIDEmpleado(Empleado *empleado) {
   //  abrir el archivo
@@ -85,20 +85,20 @@ void cargarEmpleadosEnMemoria() {
   //validación de ID
   cargarIDEmpleado(NuevoEmpleado);
   //pedir y cargar datos
-  printf("\n");
   printf("\nIngrese el apellido del empleado: ");
-  limpiarBuffers();
   fgets(NuevoEmpleado->apellido,sizeof(NuevoEmpleado->apellido),stdin);
-  printf("\nIngrese el nombre del empleado: ");
   limpiarBuffers();
+  printf("\nIngrese el nombre del empleado: ");
   fgets(NuevoEmpleado->nombre,sizeof(NuevoEmpleado->nombre),stdin);
   printf("\nIndique el cargo del empleado:\n");
   printf("\t[1] VENDEDOR\n");
   printf("\t[2] ASISTENTE\n");
   printf("\t[3] SUPERVISOR\n");
   printf("\t[4] GERENTE\n");
-  printf("\n\tCargo: ");
-  NuevoEmpleado->cargo = LeerEntero();
+  printf("\tCargo: ");
+  do {
+    NuevoEmpleado->cargo = LeerEntero();
+  } while (NuevoEmpleado->cargo < 1 || NuevoEmpleado->cargo > 4);
   establecerSalarioBase(NuevoEmpleado);
   //actualizar lista enlazada
   if (!EmpleadoPrimero) {
@@ -116,7 +116,7 @@ void cargarEmpleadosEnMemoria() {
 
 void cargarEmpleadosEnArchivo() {
   //abrir archivo o crearlo si no existía
-  FILE *empleados = fopen("../bin/empleados.dat","ab");
+  FILE *empleados = fopen("../../data/empleados.dat","ab");
   //verificar apertura/creación
   if (!empleados) {
     printf("\nError al abrir/crear el archivo.\n");
