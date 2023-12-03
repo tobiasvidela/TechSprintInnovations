@@ -35,19 +35,19 @@ void imprimirOpciones() {
 
 void submenu(int opcionELegida) {
     switch(opcionELegida) {
-        case 1:{
+        case 1:{//Crear archivo binario para Empleados y Cargar Datos.
             continuar();
             break;
         }
-        case 2:{
+        case 2:{//Crear archivo binario para Proveedores y Cargar Datos.
             continuar();
             break;
         }
-        case 3:{
+        case 3:{//Crear archivo binario para Recursos y Cargar Datos.
             continuar();
             break;
         }
-        case 4:{
+        case 4:{//Crear archivo binario para Ventas y Cargar Datos.
             continuar();
             break;
         }
