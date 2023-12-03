@@ -7,4 +7,4 @@ void limpiarBuffers();
 void continuar();
 int LeerEntero();
 float LeerFlotante();
-void imprimirCadenaCentrada(char* cadena, int ancho);
+void imprimirCadenaCentrada(const char *cadena);
