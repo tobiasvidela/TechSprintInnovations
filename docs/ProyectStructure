@@ -1,0 +1,20 @@
+nombre_del_proyecto/
+│
+├── src/                # Código fuente
+│   ├── main.c          # Archivo principal (puede ser otro nombre)
+│   ├── modulo1.c       # Módulo 1
+│   ├── modulo1.h       # Encabezado del módulo 1
+│   ├── modulo2.c       # Módulo 2
+│   └── modulo2.h       # Encabezado del módulo 2
+│
+├── include/            # Archivos de encabezado (si es necesario)
+│   ├── utilidades.h    # Encabezados de utilidades generales
+│   └── ...             # Otros encabezados
+│
+├── bin/                # Directorio para archivos binarios generados
+│
+├── docs/               # Documentación del proyecto
+│   └── ...             # Archivos de documentación
+│
+├── LICENSE             # Archivo de licencia
+└── README.md           # Archivo README
