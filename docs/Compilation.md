@@ -1,6 +1,13 @@
-# ¿Cómo compilar el sistema?
+# ¿Cómo compilar y ejecutar el sistema?
 
 Para compilar el sistema integral debe tenerse en cuenta el entorno en el que será compilado y ejecutado el programa. Esto es diferente para sistemas *unix* y sistemas *windows*.
+
+## Instrucciones Paso a Paso (VS Code)
+
+1. Instalar las extensiones C/C++ y C Copmiler y las demás que se crean necesarias por su criterio.
+1. Teniendo en ventana activa el archivo `main.c`, presionar el botón triangular de compilación y ejecución arriba a la derecha, o también presionando `F6` o `Fn + F6`.
+1. Esperar que compile y cargue el programa en la terminal integrada de Vs Code.
+1. Ante cualquier inconveniente contactar con el equipo de desarrollo.
 
 ## Instrucciones Paso a Paso (Windows)
 
