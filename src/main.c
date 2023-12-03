@@ -7,7 +7,6 @@
 #include "menu.c" //Ruta relativa
 
 int main(void) {
-    limpiarConsola();
     menu();
     continuar();
     printf("\nPrograma terminado.\n\n");

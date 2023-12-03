@@ -10,9 +10,11 @@
 void menu() {
     int opcion;
     do {
+        limpiarConsola();
         titulo();
         imprimirOpciones();
         opcion = LeerEntero();
+        submenu(opcion);
     } while (opcion != 0);
 
 }
@@ -29,4 +31,27 @@ void imprimirOpciones() {
     printf("[3] Crear archivo binario para Recursos y Cargar Datos\n");
     printf("[4] Crear archivo binario para Ventas y Cargar Datos\n");
     printf("[0] Salir\n");
+}
+
+void submenu(int opcionELegida) {
+    switch(opcionELegida) {
+        case 1:{
+            continuar();
+            break;
+        }
+        case 2:{
+            continuar();
+            break;
+        }
+        case 3:{
+            continuar();
+            break;
+        }
+        case 4:{
+            continuar();
+            break;
+        }
+        default:
+            break;
+    }
 }

@@ -21,6 +21,8 @@ void limpiarConsola() {
 }
 
 void limpiarBuffers() {
+  char c;
+  while((c = getchar()) != '\n'){};
   scanf("%*[^\n]%*c");
   /* "se le dice a scanf primero que ignore (uso de *) cualquier número de no 
   caracteres en blanco (distinto a tabulador '\t', espacio ' ' o salto de línea '\n') 
