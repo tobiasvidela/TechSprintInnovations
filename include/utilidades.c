@@ -26,3 +26,42 @@ void continuar() {
     limpiarBuffers();
     getchar();//  Esperar a que el usuario presione Enter
 }
+
+
+int leerEntero() {
+  int entero, control;
+  do {
+    if (scanf("%d", &entero) != 1){
+      limpiarBuffers();
+      control = 1;
+    } else {
+      control = 0;
+    }
+  } while (control);
+  return entero;
+}
+
+float leerFloat() {
+  float numero;
+  int control;
+  do {
+    if (scanf("%f", &numero) != 1) {
+      limpiarBuffers();
+      control = 1;
+    } else {
+      control = 0;
+    }
+  } while (control);
+  return numero;
+}
+
+void imprimirCadenaCentrada(char *cadena, int ancho) {
+  int longitudCadena = strlen(cadena);
+  int espacios = (ancho - longitudCadena) / 2;
+  int margenIzq = espacios;
+  int margenDer = espacios;
+
+  if ((ancho - longitudCadena) % 2 != 0) {margenDer++;}
+
+  printf("%*s%s%*s",margenIzq,"",cadena,margenDer,"");
+}
