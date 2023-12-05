@@ -7,20 +7,24 @@ typedef enum {
     GERENTE
 } Cargo;
 
-typedef struct Empleado {
+typedef struct {
     int id;
     char apellido[50];
     char nombre[50];
     Cargo cargo;
     float salario;
-    struct Empleado *siguiente;
 } Empleado;
 
-extern Empleado *EmpleadoPrimero;
-extern Empleado *EmpleadoUltimo;
+typedef struct {
+    Empleado empleado;
+    Empleado *siguiente;
+} NodoEmpleado;
 
-void cargarIDEmpleado(Empleado *empleado);
-void establecerSalarioBase(Empleado *empleado);
+extern NodoEmpleado *EmpleadoPrimerNodo;
+extern NodoEmpleado *EmpleadoUltimoNodo;
+
+void cargarIDEmpleado(NodoEmpleado *nodoNuevo);
+void establecerSalarioBase(NodoEmpleado *empleadoNuevo);
 void liberarMemoriaEmpleados();
 void cargarEmpleadosEnMemoria();
 void cargarEmpleadosEnArchivo();
