@@ -11,7 +11,7 @@ nombre_del_proyecto/
 │   ├── utilidades.h    # Encabezados de utilidades generales
 │   └── ...             # Otros encabezados
 │
-├── bin/                # Directorio para archivos binarios generados
+├── data/               # Directorio de archivos binarios para almacenar datos
 │
 ├── docs/               # Documentación del proyecto
 │   └── ...             # Archivos de documentación
