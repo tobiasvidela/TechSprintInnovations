@@ -65,7 +65,6 @@ void cargarProveedoresEnMemoria() {
   limpiarBuffers();
   printf("\nIngrese la direccion del proveedor: ");
   fgets(NuevoNodo->proveedor.direccion,sizeof(NuevoNodo->proveedor.direccion),stdin);
-  limpiarBuffers();
   printf("\nIngrese el telefono del proveedor: ");
   fgets(NuevoNodo->proveedor.telefono,sizeof(NuevoNodo->proveedor.telefono),stdin);
   //actualizar lista enlazada
