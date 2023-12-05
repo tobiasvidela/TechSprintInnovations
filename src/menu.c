@@ -6,6 +6,8 @@
 #include "../include/utilidades.c"
 #include "empleados.h" //Ruta relativa
 #include "empleados.c" //Ruta relativa
+#include "proveedores.h" //Ruta relativa
+#include "proveedores.c" //Ruta relativa
 #include "menu.h"
 
 
@@ -22,9 +24,9 @@ void menu() {
 }
 
 void titulo() {
-    imprimirCadenaCentrada("\n");
-    imprimirCadenaCentrada("Sistema Integral para TechSprint Innovations");
-    imprimirCadenaCentrada("\n");
+    imprimirCadenaCentradaEnConsola("\n");
+    imprimirCadenaCentradaEnConsola("Sistema Integral para TechSprint Innovations");
+    imprimirCadenaCentradaEnConsola("\n");
 }
 
 void imprimirOpciones() {
@@ -45,6 +47,7 @@ void submenu(int opcionELegida) {
         }
         case 2:{//Crear archivo binario para Proveedores y Cargar Datos.
             limpiarConsola();
+            submenuProveedores();
             continuar();
             break;
         }
@@ -66,7 +69,7 @@ void submenu(int opcionELegida) {
 void submenuEmpleados() {
     int opcion;
     printf("\n");
-    imprimirCadenaCentrada("Sub Menu Empleados");
+    imprimirCadenaCentradaEnConsola("Sub Menu Empleados");
     printf("\n");
     printf("¿Desea agregar un empleado?");
     printf("\n\t[1] SI\t[0] NO\n");
@@ -75,7 +78,7 @@ void submenuEmpleados() {
         opcion = LeerEntero();
     } while (opcion < 0 || opcion > 1);
     if (opcion == 0) { return; }
-    //cargar tantos empleados como desee el usuario
+    //cargar tantos registros como desee el usuario
     do {
         limpiarConsola();
         printf("Nuevo Empleado:\n");
@@ -100,6 +103,47 @@ void submenuEmpleados() {
         }
         if (opcion == 0) {
             liberarMemoriaEmpleados();
+        }
+    } while (opcion < 0 || opcion > 1);
+}
+
+void submenuProveedores() {
+    int opcion;
+    printf("\n");
+    imprimirCadenaCentradaEnConsola("Sub Menu Proveedores");
+    printf("\n");
+    printf("¿Desea agregar un proveedor?");
+    printf("\n\t[1] SI\t[0] NO\n");
+    do {
+        printf("R: ");
+        opcion = LeerEntero();
+    } while (opcion < 0 || opcion > 1);
+    if (opcion == 0) { return; }
+    //cargar tantos registros como desee el usuario
+    do {
+        limpiarConsola();
+        printf("Nuevo Proveedor:\n");
+        cargarProveedoresEnMemoria();
+        printf("\n¿Desea seguir cargando proveedores?\n");
+        printf("\n\t[1] SI\t[0] NO\n");
+        do {
+            printf("R: ");
+            opcion = LeerEntero();
+        } while (opcion < 0 || opcion > 1);
+    } while (opcion != 0);
+    //decidir si se van a almacenar o perder los datos cargados
+    do {
+        printf("\n¿Desea almacenar los proveedores cargados?\n");
+        printf("\n\t[1] Guardar datos\t[0] Perder datos\n");
+        do {
+            printf("R: ");
+            opcion = LeerEntero();
+        } while (opcion < 0 || opcion > 1);
+        if (opcion == 1) {
+            cargarProveedoresEnArchivo();
+        }
+        if (opcion == 0) {
+            liberarMemoriaProveedores();
         }
     } while (opcion < 0 || opcion > 1);
 }
