@@ -68,23 +68,34 @@ float LeerFlotante() {
   return numero;
 }
 
-void imprimirCadenaCentrada(const char *cadena) {
+void imprimirCadenaCentradaEnAncho(char *cadena, int ancho) {
+  int longitudCadena = strlen(cadena);
+  int espacios = (ancho - longitudCadena) / 2;
+  int margenIzq = espacios;
+  int margenDer = espacios;
+
+  if ((ancho - longitudCadena) % 2 != 0) {margenDer++;}
+
+  printf("%*s%s%*s",margenIzq,"",cadena,margenDer,"");
+}
+
+void imprimirCadenaCentradaEnConsola(const char *cadena) {
   int ancho_consola;
-    #ifdef _WIN32
-        CONSOLE_SCREEN_BUFFER_INFO csbi;
-        GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
-        ancho_consola = csbi.srWindow.Right - csbi.srWindow.Left + 1;
-    #else
-        struct winsize size;
-        ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
-        ancho_consola = size.ws_col;
-    #endif
+  #ifdef _WIN32
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi);
+    ancho_consola = csbi.srWindow.Right - csbi.srWindow.Left + 1;
+  #else
+    struct winsize size;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
+    ancho_consola = size.ws_col;
+  #endif
 
-    int longitud_texto = strlen(cadena);
-    int espacios = (ancho_consola - longitud_texto) / 2;
+  int longitud_texto = strlen(cadena);
+  int espacios = (ancho_consola - longitud_texto) / 2;
 
-    for (int i = 0; i < espacios; ++i) {
-        putchar(' ');
-    }
-    printf("%s\n", cadena);
+  for (int i = 0; i < espacios; ++i) {
+    putchar(' ');
+  }
+  printf("%s\n", cadena);
 }
