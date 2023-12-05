@@ -7,9 +7,9 @@ typedef struct {
     char direccion[100];
     char telefono[20];
 } Proveedor;
-typedef struct {
+typedef struct NodoProveedor {
     Proveedor proveedor;
-    Proveedor *siguiente;
+    struct NodoProveedor *siguiente;
 } NodoProveedor;
 
 extern NodoProveedor *ProveedorPrimero;

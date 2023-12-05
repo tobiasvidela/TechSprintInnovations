@@ -15,9 +15,9 @@ typedef struct {
     float salario;
 } Empleado;
 
-typedef struct {
+typedef struct NodoEmpleado {
     Empleado empleado;
-    Empleado *siguiente;
+    struct NodoEmpleado *siguiente;
 } NodoEmpleado;
 
 extern NodoEmpleado *EmpleadoPrimerNodo;

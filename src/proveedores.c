@@ -58,7 +58,7 @@ void cargarProveedoresEnMemoria() {
     return;
   }
   //validación de ID
-  cargarIDEmpleado(NuevoNodo);
+  cargarIDProveedor(NuevoNodo);
   //pedir y cargar datos
   printf("\nIngrese el nombre del proveedor: ");
   fgets(NuevoNodo->proveedor.nombre,sizeof(NuevoNodo->proveedor.nombre),stdin);
