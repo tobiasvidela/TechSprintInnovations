@@ -12,7 +12,7 @@ NodoEmpleado *EmpleadoUltimoNodo = NULL;
 
 void cargarIDEmpleado(NodoEmpleado *nodoNuevo) {
   //  abrir el archivo
-  FILE *empleados = fopen("empleados.dat","rb");
+  FILE *empleados = fopen("../../data/empleados.dat","rb");
   //  si el archivo no existe
   if (empleados == NULL) {
     nodoNuevo->empleado.id = 1;
@@ -64,14 +64,14 @@ void establecerSalarioBase(NodoEmpleado *empleadoNuevo) {
 
 void liberarMemoriaEmpleados() {
   NodoEmpleado *NodoActual = EmpleadoPrimerNodo;
-  while (NodoActual) {
-    //almacenar empleado ya almacenado
-    NodoEmpleado *Killer = NodoActual;
-    //avanzar al siguiente empleado
+  while (NodoActual != NULL) {
+    NodoEmpleado *NodoAEliminar = NodoActual;
     NodoActual = NodoActual->siguiente;
-    //liberar memoria
-    free(Killer);
+    free(NodoAEliminar);
   }
+  //resetear lista enlazada
+  EmpleadoPrimerNodo = NULL;
+  EmpleadoUltimoNodo = NULL;
   printf("\nMemoria liberada.\n");
 }
 
@@ -85,11 +85,11 @@ void cargarEmpleadosEnMemoria() {
   //validación de ID
   cargarIDEmpleado(NuevoEmpleado);
   //pedir y cargar datos
-  printf("\nIngrese el apellido del empleado: ");
-  fgets(NuevoEmpleado->empleado.apellido,sizeof(NuevoEmpleado->empleado.apellido),stdin);
   limpiarBuffers();
+  printf("\nIngrese el apellido del empleado: ");
+  LeerCadena(NuevoEmpleado->empleado.apellido, sizeof(NuevoEmpleado->empleado.apellido));
   printf("\nIngrese el nombre del empleado: ");
-  fgets(NuevoEmpleado->empleado.nombre,sizeof(NuevoEmpleado->empleado.nombre),stdin);
+  LeerCadena(NuevoEmpleado->empleado.nombre, sizeof(NuevoEmpleado->empleado.nombre));
   printf("\nIndique el cargo del empleado:\n");
   printf("\t[1] VENDEDOR\n");
   printf("\t[2] ASISTENTE\n");
@@ -99,6 +99,7 @@ void cargarEmpleadosEnMemoria() {
   do {
     NuevoEmpleado->empleado.cargo = LeerEntero();
   } while (NuevoEmpleado->empleado.cargo < 1 || NuevoEmpleado->empleado.cargo > 4);
+  limpiarBuffers();
   establecerSalarioBase(NuevoEmpleado);
   //actualizar lista enlazada
   if (!EmpleadoPrimerNodo) {
@@ -112,6 +113,15 @@ void cargarEmpleadosEnMemoria() {
   }
   //mensaje de finalización
   printf("\n\nDatos cargados en memoria listos para almacenar.\n");
+  NodoEmpleado *actual = EmpleadoPrimerNodo;
+  while (actual) {
+    printf("\n[%d] ",actual->empleado.id);
+    printf("%s ",actual->empleado.nombre);
+    printf("%s ",actual->empleado.apellido);
+    printf("%.2f ",actual->empleado.salario);
+    printf("%d ",actual->empleado.cargo);
+    actual = actual->siguiente;
+  }
 }
 
 void cargarEmpleadosEnArchivo() {
@@ -137,5 +147,36 @@ void cargarEmpleadosEnArchivo() {
   }
   //aviso al usuario
   printf("\n\nDatos registrados en el archivo.\n");
+  //cerrar el archivo
+  fclose(empleados);
   liberarMemoriaEmpleados();
+}
+
+void listaDeEmpleados() {
+  //abrir el archivo
+  FILE *empleados = fopen("../../data/empleados.dat","rb");
+  //verificar apertura
+  if (!empleados) {
+    printf("\nError al abrir el archivo.\n");
+    return;
+  }
+  //si está vacío
+  //fseek(empleados,0,SEEK_END);
+  //if (ftell(empleados) == 0) {
+  //  printf("\nEl archivo está vacío.\n");
+  //  return;
+  //}
+  //si tiene información para mostrar
+  fseek(empleados,0,SEEK_SET);  //  colocar el puntero de lectura de nuevo al inicio
+  //iterar y mostrar todos los registros, ordenándolos por id
+  Empleado empleadoActual;
+  while (fread(&empleadoActual,sizeof(Empleado),1,empleados) == 1) {
+    printf("\n[%d] ",empleadoActual.id);
+    printf("%s ",empleadoActual.nombre);
+    printf("%s ",empleadoActual.apellido);
+    printf("%.2f ",empleadoActual.salario);
+    printf("%d ",empleadoActual.cargo);
+  }
+  //cerrar el archivo
+  fclose(empleados);
 }

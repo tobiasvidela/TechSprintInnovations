@@ -19,3 +19,6 @@ void cargarIDProveedor(NodoProveedor *nodoNuevo);
 void liberarMemoriaProveedores();
 void cargarProveedoresEnMemoria();
 void cargarProveedoresEnArchivo();
+void listaDeProveedores();
+int obtenerTotalProveedores();
+Proveedor copiarProveedorElegido(int idProveedorElegido);

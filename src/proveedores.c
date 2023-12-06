@@ -12,7 +12,7 @@ NodoProveedor *ProveedorUltimoNodo = NULL;
 
 void cargarIDProveedor(NodoProveedor *nodoNuevo) {
   //  abrir el archivo
-  FILE *proveedores = fopen("proveedores.dat","rb");
+  FILE *proveedores = fopen("./../data/proveedores.dat","rb");
   //  si el archivo no existe
   if (proveedores == NULL) {
     nodoNuevo->proveedor.id = 1;
@@ -104,5 +104,83 @@ void cargarProveedoresEnArchivo() {
   }
   //aviso al usuario
   printf("\n\nDatos registrados en el archivo.\n");
+  //cerrar archivo
+  fclose(proveedores);
   liberarMemoriaProveedores();
+}
+
+void listaDeProveedores() {
+  //abrir el archivo
+  FILE *proveedores = fopen("../../data/proveedores.dat","rb");
+  //verificar apertura
+  if (!proveedores) {
+    printf("\nError al abrir el archivo.\n");
+    return;
+  }
+  //si está vacío
+  fseek(proveedores,0,SEEK_END);
+  if (ftell(proveedores) == 0) {
+    printf("\nEl archivo está vacío.\n");
+    return;
+  }
+  //si tiene información para mostrar
+  fseek(proveedores,0,SEEK_SET);  //  colocar el puntero de lectura de nuevo al inicio
+  //iterar y mostrar todos los registros, ordenándolos por id
+  Proveedor proveedorActual;
+  while (fread(&proveedorActual,sizeof(Proveedor),1,proveedores) == 1) {
+    printf("\n[%d] %s",proveedorActual.id,proveedorActual.nombre);
+  }
+  //cerrar el archivo
+  fclose(proveedores);
+}
+
+int obtenerTotalProveedores() {
+  //abrir el archivo
+  FILE *proveedores = fopen("../../data/proveedores.dat","rb");
+  //verificar apertura
+  if (!proveedores) {
+    printf("\nError al abrir el archivo.\n");
+    return 0;
+  }
+  //si está vacío
+  fseek(proveedores,0,SEEK_END);
+  if (ftell(proveedores) == 0) {
+    return 0;
+  }
+  //si tiene información
+  //colocar el puntero de lectura al principio del último registro
+  fseek(proveedores,(-1)*sizeof(Proveedor),SEEK_END);
+  //leemos el último registro y lo guardamos en una variable
+  Proveedor ultimoProveedor;
+  fread(&ultimoProveedor,sizeof(Proveedor),1,proveedores);
+  //cerrar el archivo
+  fclose(proveedores);
+  //devoler el id del último registro
+  return ultimoProveedor.id;
+}
+
+Proveedor copiarProveedorElegido(int idProveedorElegido) {
+  Proveedor proveedorElegido;
+  //abrir el archivo
+  FILE *proveedores = fopen("../../data/proveedores.dat","rb");
+  //verificar apertura
+  if (!proveedores) {
+    printf("\nError al abrir el archivo.\n");
+    return proveedorElegido;
+  }
+  //si está vacío
+  fseek(proveedores,0,SEEK_END);
+  if (ftell(proveedores) == 0) {
+    printf("\nEl archivo está vacío.\n");
+    return proveedorElegido;
+  }
+  //si tiene información
+  //posicionarse al PRINCIPIO del registro elegido utilizando el id
+  fseek(proveedores,(idProveedorElegido-1)*sizeof(Proveedor),SEEK_SET);
+  //copiar el registro en una variable temporal
+  fread(&proveedorElegido,sizeof(Proveedor),1,proveedores);
+  //cerrar el archivo
+  fclose(proveedores);
+  //devolver el registro
+  return proveedorElegido;
 }

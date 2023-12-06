@@ -1,13 +1,13 @@
 #pragma once
 
-typedef enum {
-    VENDEDOR,
+typedef enum Cargo {
+    VENDEDOR = 1,
     ASISTENTE,
     SUPERVISOR,
     GERENTE
 } Cargo;
 
-typedef struct {
+typedef struct Empleado {
     int id;
     char apellido[50];
     char nombre[50];
@@ -28,3 +28,4 @@ void establecerSalarioBase(NodoEmpleado *empleadoNuevo);
 void liberarMemoriaEmpleados();
 void cargarEmpleadosEnMemoria();
 void cargarEmpleadosEnArchivo();
+void listaDeEmpleados();

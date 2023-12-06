@@ -8,6 +8,8 @@
 #include "empleados.c" //Ruta relativa
 #include "proveedores.h" //Ruta relativa
 #include "proveedores.c" //Ruta relativa
+#include "productos.h" //Ruta relativa
+#include "productos.c" //Ruta relativa
 #include "menu.h"
 
 
@@ -30,33 +32,106 @@ void titulo() {
 }
 
 void imprimirOpciones() {
-    printf("[1] Crear archivo binario para Empleados y Cargar Datos.\n");
-    printf("[2] Crear archivo binario para Proveedores y Cargar Datos\n");
-    printf("[3] Crear archivo binario para Recursos y Cargar Datos\n");
-    printf("[4] Crear archivo binario para Ventas y Cargar Datos\n");
+    printf("[1] Gestion de Inventarios\n");
+    printf("[2] Administracion de Recursos\n");
+    printf("[3] Procesamiento de Transacciones\n");
+    printf("[4] Herramientas de Analisis\n");
     printf("[0] Salir\n");
 }
 
 void submenu(int opcionELegida) {
+    int opcion;
     switch(opcionELegida) {
-        case 1:{//Crear archivo binario para Empleados y Cargar Datos.
+        case 1:{//menu Gestion de Inventarios
+            limpiarConsola();
+            continuar();
+            break;
+        }
+        case 2:{//menu Administracion de Recursos
+            do {
+                limpiarConsola();
+                imprimirCadenaCentradaEnConsola("Administracion de Recursos");
+                menuAdministracionRecursos();
+                do {
+                    printf("\tOpcion: ");
+                    opcion = LeerEntero();
+                } while (opcion < 0 || opcion > 8);
+                submenuAdministracionRecursos(opcion);
+            } while (opcion != 0);
+            continuar();
+            break;
+        }
+        case 3:{//menu Procesamiento de Transacciones
+            limpiarConsola();
+            continuar();
+            break;
+        }
+        case 4:{//menu Herrameintas de Analisis
+            limpiarConsola();
+            continuar();
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+void menuAdministracionRecursos() {
+    printf("[1] Crear archivo binario para Empleados y Cargar Datos\n");
+    printf("[2] Ver lista de Empleados almacenados\n");
+    printf("[3] Crear archivo binario para Proveedores y Cargar Datos\n");
+    printf("[4] Ver lista de Proveedores almacenados\n");
+    printf("[5] Crear archivo binario para Productos y Cargar Datos\n");
+    printf("[6] Ver lista de Productos almacenados\n");
+    printf("[7] Crear archivo binario para Ventas y Cargar Datos\n");
+    printf("[8] Ver lista de Ventas almacenadas\n");
+    printf("[0] Salir\n");
+}
+
+void submenuAdministracionRecursos(int opcionELegida) {
+    switch(opcionELegida) {
+        case 1:{
             limpiarConsola();
             submenuEmpleados();
             continuar();
             break;
         }
-        case 2:{//Crear archivo binario para Proveedores y Cargar Datos.
+        case 2:{
+            limpiarConsola();
+            listaDeEmpleados();
+            continuar();
+            break;
+        }
+        case 3:{
             limpiarConsola();
             submenuProveedores();
             continuar();
             break;
         }
-        case 3:{//Crear archivo binario para Recursos y Cargar Datos.
+        case 4:{
+            limpiarConsola();
+            listaDeProveedores();
+            continuar();
+            break;
+        }
+        case 5:{
+            limpiarConsola();
+            submenuProductos();
+            continuar();
+            break;
+        }
+        case 6:{
+            limpiarConsola();
+            listaDeProductos();
+            continuar();
+            break;
+        }
+        case 7:{
             limpiarConsola();
             continuar();
             break;
         }
-        case 4:{//Crear archivo binario para Ventas y Cargar Datos.
+        case 8:{
             limpiarConsola();
             continuar();
             break;
@@ -144,6 +219,47 @@ void submenuProveedores() {
         }
         if (opcion == 0) {
             liberarMemoriaProveedores();
+        }
+    } while (opcion < 0 || opcion > 1);
+}
+
+void submenuProductos() {
+    int opcion;
+    printf("\n");
+    imprimirCadenaCentradaEnConsola("Sub Menu Productos");
+    printf("\n");
+    printf("¿Desea agregar un producto?");
+    printf("\n\t[1] SI\t[0] NO\n");
+    do {
+        printf("R: ");
+        opcion = LeerEntero();
+    } while (opcion < 0 || opcion > 1);
+    if (opcion == 0) { return; }
+    //cargar tantos registros como desee el usuario
+    do {
+        limpiarConsola();
+        printf("Nuevo Producto:\n");
+        cargarProductosEnMemoria();
+        printf("\n¿Desea seguir cargando productos?\n");
+        printf("\n\t[1] SI\t[0] NO\n");
+        do {
+            printf("R: ");
+            opcion = LeerEntero();
+        } while (opcion < 0 || opcion > 1);
+    } while (opcion != 0);
+    //decidir si se van a almacenar o perder los datos cargados
+    do {
+        printf("\n¿Desea almacenar los productos cargados?\n");
+        printf("\n\t[1] Guardar datos\t[0] Perder datos\n");
+        do {
+            printf("R: ");
+            opcion = LeerEntero();
+        } while (opcion < 0 || opcion > 1);
+        if (opcion == 1) {
+            cargarProductosEnArchivo();
+        }
+        if (opcion == 0) {
+            liberarMemoriaProductos();
         }
     } while (opcion < 0 || opcion > 1);
 }

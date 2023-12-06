@@ -68,6 +68,15 @@ float LeerFlotante() {
   return numero;
 }
 
+void LeerCadena(char *cadena, int longitud) {
+
+  fgets(cadena, longitud, stdin); // Leer la cadena con fgets
+
+  // Eliminar el carácter de salto de línea si está presente
+  cadena[strcspn(cadena, "\n")] = '\0';
+}
+
+
 void imprimirCadenaCentradaEnAncho(char *cadena, int ancho) {
   int longitudCadena = strlen(cadena);
   int espacios = (ancho - longitudCadena) / 2;
