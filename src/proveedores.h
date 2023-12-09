@@ -7,6 +7,7 @@ typedef struct {
     char direccion[100];
     char telefono[20];
 } Proveedor;
+
 typedef struct NodoProveedor {
     Proveedor proveedor;
     struct NodoProveedor *siguiente;
