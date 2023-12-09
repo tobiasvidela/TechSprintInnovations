@@ -75,7 +75,7 @@ void liberarMemoriaEmpleados() {
   printf("\nMemoria liberada.\n");
 }
 
-void cargarEmpleadosEnMemoria() {
+void cargarEmpleadosEnMemoria() { 
   //asignar memoria
   NodoEmpleado *NuevoEmpleado = malloc(sizeof(NodoEmpleado));
   if (!NuevoEmpleado) {
@@ -113,15 +113,6 @@ void cargarEmpleadosEnMemoria() {
   }
   //mensaje de finalización
   printf("\n\nDatos cargados en memoria listos para almacenar.\n");
-  NodoEmpleado *actual = EmpleadoPrimerNodo;
-  while (actual) {
-    printf("\n[%d] ",actual->empleado.id);
-    printf("%s ",actual->empleado.nombre);
-    printf("%s ",actual->empleado.apellido);
-    printf("%.2f ",actual->empleado.salario);
-    printf("%d ",actual->empleado.cargo);
-    actual = actual->siguiente;
-  }
 }
 
 void cargarEmpleadosEnArchivo() {

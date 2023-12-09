@@ -12,7 +12,7 @@ NodoProveedor *ProveedorUltimoNodo = NULL;
 
 void cargarIDProveedor(NodoProveedor *nodoNuevo) {
   //  abrir el archivo
-  FILE *proveedores = fopen("./../data/proveedores.dat","rb");
+  FILE *proveedores = fopen("../../data/proveedores.dat","rb");
   //  si el archivo no existe
   if (proveedores == NULL) {
     nodoNuevo->proveedor.id = 1;
@@ -39,42 +39,42 @@ void cargarIDProveedor(NodoProveedor *nodoNuevo) {
 
 void liberarMemoriaProveedores() {
   NodoProveedor *NodoActual = ProveedorPrimerNodo;
-  while (NodoActual) {
-    //almacenar proveedor ya almacenado
-    NodoProveedor *Killer = NodoActual;
-    //avanzar al siguiente proveedor
+  while (NodoActual != NULL) {
+    NodoProveedor *NodoAEliminar = NodoActual;
     NodoActual = NodoActual->siguiente;
-    //liberar memoria
-    free(Killer);
+    free(NodoAEliminar);
   }
+  //resetear lista enlazada
+  ProveedorPrimerNodo = NULL;
+  ProveedorUltimoNodo = NULL;
   printf("\nMemoria liberada.\n");
 }
 
 void cargarProveedoresEnMemoria() {
   //asignar memoria
-  NodoProveedor *NuevoNodo = malloc(sizeof(NodoProveedor));
-  if (!NuevoNodo) {
+  NodoProveedor *NuevoProveedor = malloc(sizeof(NodoProveedor));
+  if (!NuevoProveedor) {
     printf("\nError al asignar memoria\n");
     return;
   }
   //validación de ID
-  cargarIDProveedor(NuevoNodo);
+  cargarIDProveedor(NuevoProveedor);
   //pedir y cargar datos
-  printf("\nIngrese el nombre del proveedor: ");
-  fgets(NuevoNodo->proveedor.nombre,sizeof(NuevoNodo->proveedor.nombre),stdin);
   limpiarBuffers();
+  printf("\nIngrese el nombre del proveedor: ");
+  LeerCadena(NuevoProveedor->proveedor.nombre, sizeof(NuevoProveedor->proveedor.nombre));
   printf("\nIngrese la direccion del proveedor: ");
-  fgets(NuevoNodo->proveedor.direccion,sizeof(NuevoNodo->proveedor.direccion),stdin);
+  LeerCadena(NuevoProveedor->proveedor.direccion, sizeof(NuevoProveedor->proveedor.direccion));
   printf("\nIngrese el telefono del proveedor: ");
-  fgets(NuevoNodo->proveedor.telefono,sizeof(NuevoNodo->proveedor.telefono),stdin);
+  LeerCadena(NuevoProveedor->proveedor.telefono, sizeof(NuevoProveedor->proveedor.telefono));
   //actualizar lista enlazada
   if (!ProveedorPrimerNodo) {
-    ProveedorPrimerNodo = NuevoNodo;
-    ProveedorUltimoNodo = NuevoNodo;
+    ProveedorPrimerNodo = NuevoProveedor;
+    ProveedorUltimoNodo = NuevoProveedor;
     ProveedorUltimoNodo->siguiente = NULL;
   } else {
-    ProveedorUltimoNodo->siguiente = NuevoNodo;
-    ProveedorUltimoNodo = NuevoNodo;
+    ProveedorUltimoNodo->siguiente = NuevoProveedor;
+    ProveedorUltimoNodo = NuevoProveedor;
     ProveedorUltimoNodo->siguiente = NULL;
   }
   //mensaje de finalización
@@ -129,6 +129,8 @@ void listaDeProveedores() {
   Proveedor proveedorActual;
   while (fread(&proveedorActual,sizeof(Proveedor),1,proveedores) == 1) {
     printf("\n[%d] %s",proveedorActual.id,proveedorActual.nombre);
+    printf(" / %s",proveedorActual.direccion);
+    printf(" / %s",proveedorActual.telefono);
   }
   //cerrar el archivo
   fclose(proveedores);
