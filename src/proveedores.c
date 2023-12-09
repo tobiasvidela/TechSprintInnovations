@@ -12,7 +12,7 @@ NodoProveedor *ProveedorUltimoNodo = NULL;
 
 void cargarIDProveedor(NodoProveedor *nodoNuevo) {
   //  abrir el archivo
-  FILE *proveedores = fopen("./../data/proveedores.dat","rb");
+  FILE *proveedores = fopen("../../data/proveedores.dat","rb");
   //  si el archivo no existe
   if (proveedores == NULL) {
     nodoNuevo->proveedor.id = 1;
@@ -79,15 +79,6 @@ void cargarProveedoresEnMemoria() {
   }
   //mensaje de finalización
   printf("\n\nDatos cargados en memoria listos para almacenar.\n");
-  NodoProveedor *actual = ProveedorPrimerNodo;
-  while (actual) {
-    printf("\n[%d]",actual->proveedor.id);
-    printf(" %s",actual->proveedor.nombre);
-    printf("\f%s",actual->proveedor.direccion);
-    printf("\f%s",actual->proveedor.telefono);
-    printf("\n");
-    actual = actual->siguiente;
-  }
 }
 
 void cargarProveedoresEnArchivo() {
@@ -138,6 +129,8 @@ void listaDeProveedores() {
   Proveedor proveedorActual;
   while (fread(&proveedorActual,sizeof(Proveedor),1,proveedores) == 1) {
     printf("\n[%d] %s",proveedorActual.id,proveedorActual.nombre);
+    printf(" / %s",proveedorActual.direccion);
+    printf(" / %s",proveedorActual.telefono);
   }
   //cerrar el archivo
   fclose(proveedores);
