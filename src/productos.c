@@ -48,6 +48,9 @@ void liberarMemoriaProductos() {
     //liberar memoria
     free(Killer);
   }
+  //resetear lista enlazada
+  ProductoPrimerNodo = NULL;
+  ProductoUltimoNodo = NULL;
   printf("\nMemoria liberada.\n");
 }
 
