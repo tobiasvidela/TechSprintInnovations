@@ -50,4 +50,4 @@ Para cualquier duda, sugerencia o consulta, no dudes en ponerte en contacto con 
 
 ---
 > [!NOTE]
-Este proyecto no es parte del programa académico y no está asociado oficialmente con la empresa TechSprint Innovations.
+> Este proyecto no es parte del programa académico y no está asociado oficialmente con la empresa TechSprint Innovations.
