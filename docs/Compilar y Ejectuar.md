@@ -2,6 +2,10 @@
 
 Para compilar el sistema integral debe tenerse en cuenta el entorno en el que será compilado y ejecutado el programa. Esto es diferente para sistemas *unix* y sistemas *windows*.
 
+> [!NOTE]
+>
+> Recuerda descargar el proyecto y seguir los pasos de manera local para los casos de Sistemas Operativos.
+
 ## Instrucciones Paso a Paso (VS Code)
 
 1. Instalar las extensiones C/C++ y C Copmiler y las demás que se crean necesarias por su criterio.
@@ -9,7 +13,9 @@ Para compilar el sistema integral debe tenerse en cuenta el entorno en el que se
 1. Esperar que compile y cargue el programa en la terminal integrada de Vs Code.
 1. Ante cualquier inconveniente contactar con el equipo de desarrollo.
 
-## Instrucciones Paso a Paso (Windows)
+## Instrucciones para Sistemas Operativos
+
+### Windows
 
 1. Comprobar que el compilador `MinGW`, o alguno para C, esté instalado. De lo contrario, realizar la descarga e instalación.
 1. Debe irse a la carpeta donde está ubicado el archivo `main.c` y abrir una terminal allí.
@@ -17,7 +23,7 @@ Para compilar el sistema integral debe tenerse en cuenta el entorno en el que se
 1. Finalmente ejecutar el archivo `main.exe`. Por ejemplo, dando doble click al archivo.
 1. Ante cualquier inconveniente contactar con el equipo de desarrollo.
 
-## Instrucciones Paso a Paso (Linux)
+### Linux
 
 1. Comprobar que el compilador `gcc` o semejante está instalado. De lo contrario, realizar la descarga e instalación.
 1. Dirigirse a la carpeta donde está el archivo `main.c` y abrir una terminal allí.
