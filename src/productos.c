@@ -48,6 +48,9 @@ void liberarMemoriaProductos() {
     //liberar memoria
     free(Killer);
   }
+  //resetear lista enlazada
+  ProductoPrimerNodo = NULL;
+  ProductoUltimoNodo = NULL;
   printf("\nMemoria liberada.\n");
 }
 
@@ -70,9 +73,9 @@ void cargarProductosEnMemoria() {
   do {
     NuevoProducto->producto.tipo = LeerEntero();
   } while (NuevoProducto->producto.tipo < 1 || NuevoProducto->producto.tipo > 4);
-  printf("\nIngrese el nombre del producto: ");
-  fgets(NuevoProducto->producto.nombre,sizeof(NuevoProducto->producto.nombre),stdin);
   limpiarBuffers();
+  printf("\nIngrese el nombre del producto: ");
+  LeerCadena(NuevoProducto->producto.nombre,sizeof(NuevoProducto->producto.nombre));
   printf("\nIngrese el precio del producto (xxxx.xx): ");
   NuevoProducto->producto.precio = LeerFlotante();
   printf("\nIndique el proveedor del producto: ");
@@ -148,6 +151,10 @@ void listaDeProductos() {
   Producto productoActual;
   while (fread(&productoActual,sizeof(Producto),1,productos) == 1) {
     printf("\n[%d] %s",productoActual.id,productoActual.nombre);
+    printf(" / %d",productoActual.tipo);
+    printf(" / %.2f",productoActual.precio);
+    printf(" / (%d)",productoActual.proveedor.id);
+    printf(" %s",productoActual.proveedor.nombre);
   }
   //cerrar el archivo
   fclose(productos);
