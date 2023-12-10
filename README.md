@@ -49,4 +49,5 @@ Para cualquier duda, sugerencia o consulta, no dudes en ponerte en contacto con 
   - Leonel ([Perfil de GitHub](https://github.com/))
 
 ---
+> [!NOTE]
 Este proyecto no es parte del programa académico y no está asociado oficialmente con la empresa TechSprint Innovations.
