@@ -1,3 +1,4 @@
+``````
 Sistema de Información Integral TechSprint Innovations/
 │
 ├── src/                # Código fuente
@@ -19,3 +20,4 @@ Sistema de Información Integral TechSprint Innovations/
 │
 ├── LICENSE             # Archivo de licencia
 └── README.md           # Archivo README
+``````
