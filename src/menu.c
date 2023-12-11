@@ -2,8 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "../include/utilidades.h"
-#include "../include/utilidades.c"
+#include "../include/utilidades.h" //Ruta relativa
+#include "../include/utilidades.c" //Ruta relativa
 #include "empleados.h" //Ruta relativa
 #include "empleados.c" //Ruta relativa
 #include "proveedores.h" //Ruta relativa
@@ -14,6 +14,7 @@
 
 
 void menu() {
+    //imprimir menu principal
     int opcion;
     do {
         limpiarConsola();
@@ -40,14 +41,17 @@ void imprimirOpciones() {
 }
 
 void submenu(int opcionELegida) {
+    //imprimir submenu elegido
     int opcion;
     switch(opcionELegida) {
-        case 1:{//menu Gestion de Inventarios
+        case 1:{
+            //menu Gestion de Inventarios
             limpiarConsola();
             continuar();
             break;
         }
-        case 2:{//menu Administracion de Recursos
+        case 2:{
+            //menu Administracion de Recursos
             do {
                 limpiarConsola();
                 imprimirCadenaCentradaEnConsola("Administracion de Recursos");
@@ -61,12 +65,14 @@ void submenu(int opcionELegida) {
             continuar();
             break;
         }
-        case 3:{//menu Procesamiento de Transacciones
+        case 3:{
+            //menu Procesamiento de Transacciones
             limpiarConsola();
             continuar();
             break;
         }
-        case 4:{//menu Herrameintas de Analisis
+        case 4:{
+            //menu Herrameintas de Analisis
             limpiarConsola();
             continuar();
             break;
@@ -77,6 +83,7 @@ void submenu(int opcionELegida) {
 }
 
 void menuAdministracionRecursos() {
+    //imprimir opciones del submenu elegido
     printf("[1] Cargar y almacenar nuevos Empleados\n");
     printf("[2] Ver lista de Empleados almacenados\n");
     printf("[3] Cargar y almacenar nuevos Proveedores\n");
@@ -89,6 +96,7 @@ void menuAdministracionRecursos() {
 }
 
 void submenuAdministracionRecursos(int opcionELegida) {
+    //imprimir submenu elegido
     switch(opcionELegida) {
         case 1:{
             limpiarConsola();
