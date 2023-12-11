@@ -77,13 +77,13 @@ void submenu(int opcionELegida) {
 }
 
 void menuAdministracionRecursos() {
-    printf("[1] Crear archivo binario para Empleados y Cargar Datos\n");
+    printf("[1] Cargar y almacenar nuevos Empleados\n");
     printf("[2] Ver lista de Empleados almacenados\n");
-    printf("[3] Crear archivo binario para Proveedores y Cargar Datos\n");
+    printf("[3] Cargar y almacenar nuevos Proveedores\n");
     printf("[4] Ver lista de Proveedores almacenados\n");
-    printf("[5] Crear archivo binario para Productos y Cargar Datos\n");
+    printf("[5] Cargar y almacenar nuevos Productos\n");
     printf("[6] Ver lista de Productos almacenados\n");
-    printf("[7] Crear archivo binario para Ventas y Cargar Datos\n");
+    printf("[7] Cargar y almacenar nuevas Ventas\n");
     printf("[8] Ver lista de Ventas almacenadas\n");
     printf("[0] Salir\n");
 }
