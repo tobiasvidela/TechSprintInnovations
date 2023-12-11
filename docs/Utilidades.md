@@ -29,7 +29,7 @@ Al ser un programa CLI, este proyecto necesita de una función que se encargue d
         Si el sistema es tipo Unix, se ejecuta el comando `"clear"` usando la función `system()`.
         Si no es un sistema tipo Unix (es decir, es un sistema Windows), se ejecuta el comando `"cls"` usando `system()`.
 
-    1. `system()`:
+    2. `system()`:
     
         Esta función pertenece a la biblioteca estándar de C (stdlib.h) y se utiliza para ejecutar comandos del sistema operativo desde el programa en C.
         En sistemas Unix ("clear"): El comando `"clear"` borra la pantalla de la terminal o consola, eliminando todo el texto y devolviendo la posición del cursor al inicio.
